@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan yang dari Jahid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+            text-align: center;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        .page {
+            display: none;
+            min-height: 80vh;
+            padding: 50px 20px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .active {
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #ff4081;
+        }
+
+        p {
+            font-size: 1.2em;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            line-height: 1.5;
+        }
+
+        img {
+            width: 200px;
+            border-radius: 50%;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        button {
+            background: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background: #e91e63;
+        }
+
+        canvas {
+            border: 2px dashed #ff4081;
+            background-color: white;
+        }
+
+        video {
+            max-width: 90%;
+            border: 5px solid #ff4081;
+            border-radius: 10px;
+        }
+
+        /* Audio Player */
+        .audio-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 0;
+            box-shadow: 0 -3px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Halaman 1 -->
+<div class="page active" id="page1">
+    <h1>❤ Selamat Ulang Tahun, Umi! ❤</h1>
+    <img src="rt.jpeg" alt="Foto Ulang Tahun">
+    <p>Semoga harimu penuh kebahagiaan, tawa, dan cinta. Semua mimpimu tercapai, dan setiap langkahmu penuh berkah. 💖</p>
+    <div>
+        <button onclick="nextPage()">Next ➡</button>
+    </div>
+</div>
+
+<!-- Halaman 2 -->
+<div class="page" id="page2">
+    <h1>🖌 Ruang Kreatif</h1>
+    <p>Kamu bisa menulis atau menggambar ucapan di sini.</p>
+    <canvas id="myCanvas" width="300" height="300"></canvas>
+    <div>
+        <button onclick="prevPage()">⬅ Back</button>
+        <button onclick="nextPage()">Next ➡</button>
+    </div>
+</div>
+
+<!-- Halaman 3 -->
+<div class="page" id="page3">
+    <h1>🎥 Kenangan Manis</h1>
+    <p>Tonton video spesial ulang tahunmu.</p>
+    <video controls>
+        <source src="video.mp4" type="video/mp4">
+        Browser kamu tidak mendukung video.
+    </video>
+    <div>
+        <button onclick="prevPage()">⬅ Back</button>
+    </div>
+</div>
+
+<!-- Audio Player -->
+<div class="audio-player">
+    <audio controls>
+        <source src="au.mp4" type="audio/mpeg">
+        Browser kamu tidak mendukung audio.
+    </audio>
+</div>
+
+<script>
+    let currentPage = 1;
+    const totalPages = 3;
+
+    function showPage(page) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(`page${page}`).classList.add('active');
+    }
+
+    function nextPage() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            showPage(currentPage);
+        }
+    }
+
+    function prevPage() {
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
+        }
+    }
+</script>
+
+</body>
+</html>
